@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 6 Months Aditi ❤️</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 40px;
+    }
+
+    .gift-box {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 15px;
+      margin: 40px auto;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    .gift-box::before, .gift-box::after {
+      content: '';
+      position: absolute;
+      background: #e91e63;
+    }
+
+    .gift-box::before {
+      width: 100%;
+      height: 20px;
+      top: 65px;
+      left: 0;
+    }
+
+    .gift-box::after {
+      width: 20px;
+      height: 100%;
+      left: 65px;
+      top: 0;
+    }
+
+    .ribbon {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 30px solid #e91e63;
+    }
+
+    .message-box {
+      display: none;
+      max-width: 90%;
+      margin: auto;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .message-box img {
+      width: 180px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    .message-box p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4f81;
+      transform: rotate(45deg);
+      animation: float 8s linear infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4f81;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy 6 Months, My Love ❤️</h1>
+
+  <div class="gift-box" onclick="openGift()">
+    <div class="ribbon"></div>
+  </div>
+
+  <div class="message-box" id="messageBox">
+    <img src="Images/image.jpeg" alt="Us Together">
+    <p>My dearest Aditi,</p>
+    <p>Half a year ago, you entered my life like a sunrise—and since then, each day has felt like magic. These six months have been filled with the sweetest memories, hugs, and giggles that only you could create.</p>
+    <p>You are my soft place to fall, the calm in my storm, and the sparkle in my eyes. Just your voice brings peace to my chaos. Just your name makes me smile in silence.</p>
+    <p>Being with you is like living in a dream I never want to wake up from. You’re my today, my every tomorrow, and my forever dream. 💗</p>
+    <p>Six months is just the beginning—I want to create a whole life with you. To hold your hand every morning, to grow old while dancing to our silly songs, to build a home full of love, laughter, and little joys.</p>
+    <p>Thank you for choosing me, for loving me, for being my blessing wrapped in the cutest smile. 🥺💕</p>
+    <p>I promise, it will always be <strong>You and Me, Aditi</strong>—forever and beyond. 💍✨</p>
+  </div>
+
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function openGift() {
+      document.querySelector('.gift-box').style.display = 'none';
+      document.getElementById('messageBox').style.display = 'block';
+      launchConfetti();
+    }
+
+    function launchConfetti() {
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 400);
+  </script>
+
+</body>
+</html>
